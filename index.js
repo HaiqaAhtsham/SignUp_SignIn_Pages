@@ -38,70 +38,92 @@ const isValidEmail = (email) => {
 };
 
 const validateInputs = () => {
-  const usernameValue = username.value.trim();
-  const emailValue = email.value.trim();
-  const passwordValue = password.value.trim();
-  const password2Value = password2.value.trim();
-  const fullnameValue = fullname.value.trim();
-  const dobValue = dob.value.trim();
-  const phoneValue = phone.value.trim();
-  const addressValue = address.value.trim();
+    const usernameValue = username.value.trim();
+    const emailValue = email.value.trim();
+    const passwordValue = password.value.trim();
+    const password2Value = password2.value.trim();
+    const fullnameValue = fullname.value.trim();
+    const dobValue = dob.value.trim();
+    const phoneValue = phone.value.trim();
+    const addressValue = address.value.trim();
+    
+    const setRedBorder = (input) => {
+        input.style.borderColor = "#ff3860";
+    };
 
-  if (usernameValue === "") {
-    setError(username, "Username is required");
-  } else {
-    setSuccess(username);
-  }
+    // Reset border colors for all inputs
+    const resetBorderColors = () => {
+        [username, email, password, password2, fullname, dob, phone, address].forEach(input => {
+            input.style.borderColor = "#f0f0f0"; // Set default border color
+        });
+    };
 
-  if (emailValue === "") {
-    setError(email, "Email is required");
-  } else if (!isValidEmail(emailValue)) {
-    setError(email, "Provide a valid email address");
-  } else {
-    setSuccess(email);
-  }
+    // Trigger alert and set red border for the input field
+    const showAlertAndSetBorder = (input, message) => {
+        alert(message);
+        setRedBorder(input);
+    };
 
-  if (passwordValue === "") {
-    setError(password, "Password is required");
-  } else if (passwordValue.length < 8) {
-    setError(password, "Password must be at least 8 characters long");
-  } else if (!/\d/.test(passwordValue) || !/[!@#$%^&*]/.test(passwordValue)) {
-    setError(password, "Password must contain at least one special character and one numeric digit");
-  } else {
-    setSuccess(password);
-  }
+    // Reset border colors before starting validation
+    resetBorderColors();
 
-  if (password2Value === "") {
-    setError(password2, "Please confirm your password");
-  } else if (password2Value !== passwordValue) {
-    setError(password2, "Passwords do not match");
-  } else {
-    setSuccess(password2);
-  }
+    if (usernameValue === "") {
+        showAlertAndSetBorder(username, "Username is required");
+    } else {
+        setSuccess(username);
+    }
 
-  if (fullnameValue === "") {
-    setError(fullname, "Full name is required");
-  } else {
-    setSuccess(fullname);
-  }
+    if (emailValue === "") {
+        alert("Email is required");
+        setRedBorder(email);
+    } else if (!isValidEmail(emailValue)) {
+        alert("Provide a valid email address");
+        setRedBorder(email);
+    } else {
+        setSuccess(email);
+    }
 
-  if (dobValue === "") {
-    setError(dob, "Date of birth is required");
-  } else {
-    setSuccess(dob);
-  }
+    if (passwordValue === "") {
+        showAlertAndSetBorder(password, "Password is required");
+    } else if (passwordValue.length < 8) {
+        showAlertAndSetBorder(password, "Password must be at least 8 characters long");
+    } else if (!/\d/.test(passwordValue) || !/[!@#$%^&*]/.test(passwordValue)) {
+        showAlertAndSetBorder(password, "Password must contain at least one special character and one numeric digit");
+    } else {
+        setSuccess(password);
+    }
 
-  if (phoneValue === "") {
-    setError(phone, "Phone number is required");
-  } else if (!/^\d{10}$/.test(phoneValue)) {
-    setError(phone, "Phone number must be 10 digits");
-  } else {
-    setSuccess(phone);
-  }
+    if (password2Value === "") {
+        showAlertAndSetBorder(password2, "Please confirm your password");
+    } else if (password2Value !== passwordValue) {
+        showAlertAndSetBorder(password2, "Passwords do not match");
+    } else {
+        setSuccess(password2);
+    }
 
-  if (addressValue === "") {
-    setError(address, "Address is required");
-  } else {
-    setSuccess(address);
-  }
+    if (fullnameValue === "") {
+        showAlertAndSetBorder(fullname, "Full name is required");
+    } else {
+        setSuccess(fullname);
+    }
+
+    if (dobValue === "") {
+        showAlertAndSetBorder(dob, "Date of birth is required");
+    } else {
+        setSuccess(dob);
+    }
+
+    if (phoneValue === "") {
+        showAlertAndSetBorder(phone, "Phone number is required");
+    } else if (!/^\d{10}$/.test(phoneValue)) {
+        showAlertAndSetBorder(phone, "Phone number must be 10 digits");
+    } else {
+        setSuccess(phone);
+    }
+
+    if (addressValue === "") {
+        showAlertAndSetBorder(address, "Address is required");
+    } else {
+        setSuccess(address);
+    }
 };
