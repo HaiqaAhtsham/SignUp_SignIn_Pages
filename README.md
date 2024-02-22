@@ -22,7 +22,7 @@ The Sign Up page allows new users to register for the service. It includes a for
 ![alt text](image-7.png)
 #### Username or any other feild is Left empty an alert msg is diaplayed
 ![alt text](image-9.png)
-#### If dont agree to Terms and Conditions
+
 ---
 
 ## Sign In Page
