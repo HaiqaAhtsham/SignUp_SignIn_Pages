@@ -10,7 +10,6 @@ const address = document.getElementById("address");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-
   validateInputs();
 });
 
@@ -69,61 +68,81 @@ const validateInputs = () => {
 
     if (usernameValue === "") {
         showAlertAndSetBorder(username, "Username is required");
+        return false;
     } else {
         setSuccess(username);
+        return true;
     }
 
     if (emailValue === "") {
         alert("Email is required");
         setRedBorder(email);
+        return false;
     } else if (!isValidEmail(emailValue)) {
         alert("Provide a valid email address");
         setRedBorder(email);
+        return false;
     } else {
         setSuccess(email);
+        return true;
     }
 
     if (passwordValue === "") {
         showAlertAndSetBorder(password, "Password is required");
+        return false;
     } else if (passwordValue.length < 8) {
         showAlertAndSetBorder(password, "Password must be at least 8 characters long");
     } else if (!/\d/.test(passwordValue) || !/[!@#$%^&*]/.test(passwordValue)) {
         showAlertAndSetBorder(password, "Password must contain at least one special character and one numeric digit");
+        return false;
     } else {
         setSuccess(password);
+        return true;
     }
 
     if (password2Value === "") {
-        showAlertAndSetBorder(password2, "Please confirm your password");
-    } else if (password2Value !== passwordValue) {
+         showAlertAndSetBorder(password2, "Please confirm your password");
+        return false;
+        } else if (password2Value !== passwordValue) {
         showAlertAndSetBorder(password2, "Passwords do not match");
+        return false;
     } else {
         setSuccess(password2);
+        return true;
     }
 
     if (fullnameValue === "") {
         showAlertAndSetBorder(fullname, "Full name is required");
+        return false;
     } else {
         setSuccess(fullname);
+        return true
     }
 
     if (dobValue === "") {
         showAlertAndSetBorder(dob, "Date of birth is required");
+        return false;
     } else {
         setSuccess(dob);
+        return true;
     }
 
     if (phoneValue === "") {
         showAlertAndSetBorder(phone, "Phone number is required");
-    } else if (!/^\d{10}$/.test(phoneValue)) {
+        return false;
+    } else if (NaN(phoneValue)) {
         showAlertAndSetBorder(phone, "Phone number must be 10 digits");
+        return false;
     } else {
         setSuccess(phone);
+        return true;
     }
 
     if (addressValue === "") {
         showAlertAndSetBorder(address, "Address is required");
+        return false;
     } else {
         setSuccess(address);
+        return true;
     }
 };
