@@ -3,21 +3,23 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-#form {
-    width: 300px;
+.container {
+    width: 400px;
     margin: 20vh auto 0 auto;
     padding: 20px;
     background-color: whitesmoke;
     border-radius: 4px;
     font-size: 12px;
+    position: relative; /* Added */
 }
 
-#form h1 {
+h1 {
     color: #0f2027;
     text-align: center;
+    margin-bottom: 20px;
 }
 
-#form button {
+button {
     padding: 10px;
     margin-top: 10px;
     width: 100%;
@@ -28,33 +30,44 @@ body {
 }
 
 .input-control {
-    display: flex;
-    flex-direction: column;
+    margin-bottom: 15px;
 }
 
-.input-control input {
+label {
+    margin-bottom: 5px;
+    color: #333;
+    display: block;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+textarea {
     border: 2px solid #f0f0f0;
-	border-radius: 4px;
-	display: block;
-	font-size: 12px;
-	padding: 10px;
-	width: 100%;
+    border-radius: 4px;
+    display: block;
+    font-size: 12px;
+    padding: 10px;
+    width: 90%;
 }
 
-.input-control input:focus {
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
+textarea:focus {
     outline: 0;
 }
 
-.input-control.success input {
-    border-color: #09c372;
-}
-
-.input-control.error input {
-    border-color: #ff3860;
-}
-
-.input-control .error {
+.error {
     color: #ff3860;
     font-size: 9px;
-    height: 13px;
+    position: absolute; /* Changed */
+    bottom: -18px; /* Changed */
+    left: 0; /* Changed */
+}
+
+.success {
+    position: relative;
 }
